@@ -17,7 +17,7 @@ public class Course {
     @Column(name = "code", unique = true, nullable = false)
     private String code;
 
-    @Column(name = "creditScore", nullable = false)
+    @Column(name = "credit_score", nullable = false)
     private byte creditScore;
 
 }
