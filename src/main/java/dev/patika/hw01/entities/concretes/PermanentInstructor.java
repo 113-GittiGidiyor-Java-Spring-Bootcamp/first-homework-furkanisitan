@@ -1,4 +1,4 @@
-package main.java.dev.patika.hw01.entities.concretes;
+package dev.patika.hw01.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

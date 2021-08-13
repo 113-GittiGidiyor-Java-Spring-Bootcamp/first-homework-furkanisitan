@@ -1,6 +1,6 @@
-package main.java.dev.patika.hw01.entities.concretes;
+package dev.patika.hw01.entities.concretes;
 
-import main.java.dev.patika.hw01.entities.enums.Gender;
+import dev.patika.hw01.entities.enums.Gender;
 
 import javax.persistence.*;
 import java.time.LocalDate;
