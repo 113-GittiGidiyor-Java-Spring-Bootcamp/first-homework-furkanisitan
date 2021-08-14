@@ -4,6 +4,8 @@ import dev.patika.hw01.entities.enums.Gender;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -26,4 +28,8 @@ public class Student {
     @Enumerated
     @Column(name = "gender", columnDefinition = "TINYINT")
     private Gender gender;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Course> courses = new HashSet<>();
 }
