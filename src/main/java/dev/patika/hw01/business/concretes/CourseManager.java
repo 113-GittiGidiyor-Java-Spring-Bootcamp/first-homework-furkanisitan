@@ -31,6 +31,11 @@ public class CourseManager implements CourseService {
     }
 
     @Override
+    public Course getByCodeWithStudents(String code) {
+        return repository.findByCodeFetchStudents(code);
+    }
+
+    @Override
     public void create(Course course) {
         repository.save(course);
     }

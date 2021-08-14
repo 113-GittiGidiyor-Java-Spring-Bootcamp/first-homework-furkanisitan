@@ -12,6 +12,8 @@ public interface CourseService {
 
     Course getByCode(String code);
 
+    Course getByCodeWithStudents(String code);
+
     void create(Course course);
 
     void update(Course course);
