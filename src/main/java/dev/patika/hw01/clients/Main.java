@@ -1,24 +1,66 @@
 package dev.patika.hw01.clients;
 
 import dev.patika.hw01.api.controllers.CourseController;
+import dev.patika.hw01.business.abstracts.CourseService;
+import dev.patika.hw01.business.concretes.CourseManager;
 import dev.patika.hw01.core.constants.DbConstants;
 import dev.patika.hw01.core.helpers.EntityManagerHelper;
-import dev.patika.hw01.entities.concretes.Course;
-import dev.patika.hw01.entities.concretes.PermanentInstructor;
-import dev.patika.hw01.entities.concretes.Student;
-import dev.patika.hw01.entities.concretes.VisitingResearcher;
+import dev.patika.hw01.entities.concretes.*;
 import dev.patika.hw01.entities.enums.Gender;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        EntityManagerHelper emHelper = new EntityManagerHelper(DbConstants.PERSISTENCE_UNIT_NAME);
+        EntityManager em = emHelper.getEntityManager();
+
+        CourseController courseController = new CourseController();
+        CourseService courseService = new CourseManager();
+
         initDatabase();
-        
+
+        // get all courses
+        List<Course> courses = courseController.getAll();
+        System.out.println("get all courses");
+        System.out.println("Number of Courses: " + courses.size());
+        System.out.println("----------------------------------");
+
+        // get course by code
+        Course course = courseController.getByCode("code1");
+        System.out.println("get course by code");
+        System.out.println("Course Name: " + course.getName());
+        System.out.println("----------------------------------");
+
+        // get students of course
+        System.out.println("get students of course");
+        for (Student student : courseController.getByCodeWithStudents("code1").getStudents()) {
+            System.out.println("Student Name: " + student.getName());
+        }
+        System.out.println("----------------------------------");
+
+        // create new course
+        Course newCourse = new Course("newCourse", "newCourseCode", 6, em.find(Instructor.class, 1L));
+        courseController.create(newCourse);
+        newCourse = courseController.getByCode("newCourseCode");
+        System.out.println("create new course");
+        System.out.println("Course Name: " + newCourse.getName());
+
+        // update course
+        Course updateCourse = courseController.getById(2L);
+        updateCourse.setName("updatedCourse2");
+        courseController.update(updateCourse);
+        System.out.println("update course");
+        System.out.println("Course Name: " + courseController.getById(2L).getName());
+
+        // delete course
+        courseController.deleteById(3L);
+        System.out.println("delete course");
     }
 
     private static void initDatabase() {
