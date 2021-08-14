@@ -14,6 +14,14 @@ public class VisitingResearcher extends Instructor {
     @Column(name = "hourly_salary", nullable = false, precision = 6, scale = 2)
     private BigDecimal hourlySalary;
 
+    public VisitingResearcher() {
+    }
+
+    public VisitingResearcher(String name, String address, String phoneNumber, BigDecimal hourlySalary) {
+        super(name, address, phoneNumber);
+        this.hourlySalary = hourlySalary;
+    }
+
     public BigDecimal getHourlySalary() {
         return hourlySalary;
     }

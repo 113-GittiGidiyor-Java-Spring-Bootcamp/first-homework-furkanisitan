@@ -14,6 +14,14 @@ public class PermanentInstructor extends Instructor {
     @Column(name = "fixed_salary", nullable = false, precision = 8, scale = 2)
     private BigDecimal fixedSalary;
 
+    public PermanentInstructor() {
+    }
+
+    public PermanentInstructor(String name, String address, String phoneNumber, BigDecimal fixedSalary) {
+        super(name, address, phoneNumber);
+        this.fixedSalary = fixedSalary;
+    }
+
     public BigDecimal getFixedSalary() {
         return fixedSalary;
     }

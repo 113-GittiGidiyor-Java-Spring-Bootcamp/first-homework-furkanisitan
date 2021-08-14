@@ -29,6 +29,16 @@ public class Course {
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private Set<Student> students = new HashSet<>();
 
+    public Course() {
+    }
+
+    public Course(String name, String code, byte creditScore, Instructor instructor) {
+        this.name = name;
+        this.code = code;
+        this.creditScore = creditScore;
+        this.instructor = instructor;
+    }
+
     public Long getId() {
         return id;
     }

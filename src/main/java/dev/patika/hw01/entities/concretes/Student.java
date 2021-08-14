@@ -33,6 +33,16 @@ public class Student {
     @JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Set<Course> courses = new HashSet<>();
 
+    public Student() {
+    }
+
+    public Student(String name, String address, LocalDate birthDate, Gender gender) {
+        this.name = name;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.gender = gender;
+    }
+
     public Long getId() {
         return id;
     }
