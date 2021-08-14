@@ -14,4 +14,11 @@ public class VisitingResearcher extends Instructor {
     @Column(name = "hourly_salary", nullable = false, precision = 6, scale = 2)
     private BigDecimal hourlySalary;
 
+    public BigDecimal getHourlySalary() {
+        return hourlySalary;
+    }
+
+    public void setHourlySalary(BigDecimal hourlySalary) {
+        this.hourlySalary = hourlySalary;
+    }
 }
