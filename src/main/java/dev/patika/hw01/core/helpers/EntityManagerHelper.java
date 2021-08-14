@@ -6,13 +6,17 @@ import javax.persistence.Persistence;
 
 public class EntityManagerHelper {
 
-    private final EntityManagerFactory entityManagerFactory;
+    private final String persistenceUnitName;
+    private EntityManagerFactory entityManagerFactory;
 
     public EntityManagerHelper(String persistenceUnitName) {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
+        this.persistenceUnitName = persistenceUnitName;
     }
 
     public EntityManager getEntityManager() {
+
+        if (entityManagerFactory == null || !entityManagerFactory.isOpen())
+            this.entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
         return entityManagerFactory.createEntityManager();
     }
 
