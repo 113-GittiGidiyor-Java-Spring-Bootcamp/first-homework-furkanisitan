@@ -19,7 +19,7 @@ public class Course {
     @Column(name = "code", unique = true, nullable = false)
     private String code;
 
-    @Column(name = "credit_score", nullable = false)
+    @Column(name = "credit_score", nullable = false, columnDefinition = "TINYINT")
     private int creditScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
