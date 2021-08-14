@@ -26,10 +26,10 @@ public class Instructor {
     @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY)
     private Set<Course> courses = new HashSet<>();
 
-    public Instructor() {
+    protected Instructor() {
     }
 
-    public Instructor(String name, String address, String phoneNumber) {
+    protected Instructor(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
