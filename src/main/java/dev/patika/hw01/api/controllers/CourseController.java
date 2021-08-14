@@ -26,6 +26,10 @@ public class CourseController {
         return courseService.getByCode(code);
     }
 
+    public Course getByCodeWithStudents(String code) {
+        return courseService.getByCodeWithStudents(code);
+    }
+
     public void create(Course course) {
         courseService.create(course);
     }
