@@ -20,7 +20,7 @@ public class Course {
     private String code;
 
     @Column(name = "credit_score", nullable = false)
-    private byte creditScore;
+    private int creditScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_id", nullable = false)
@@ -32,7 +32,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(String name, String code, byte creditScore, Instructor instructor) {
+    public Course(String name, String code, int creditScore, Instructor instructor) {
         this.name = name;
         this.code = code;
         this.creditScore = creditScore;
@@ -59,11 +59,11 @@ public class Course {
         this.code = code;
     }
 
-    public byte getCreditScore() {
+    public int getCreditScore() {
         return creditScore;
     }
 
-    public void setCreditScore(byte creditScore) {
+    public void setCreditScore(int creditScore) {
         this.creditScore = creditScore;
     }
 
